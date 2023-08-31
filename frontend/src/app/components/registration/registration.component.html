@@ -1,0 +1,96 @@
+<div
+  class="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl mt-[150px]">
+
+    <div class="hidden bg-cover lg:block lg:w-3/4" style="
+      background-image: url(&quot;https://media2.giphy.com/media/MQ05zoiUkdjGB0iNZF/giphy.gif?cid=6c09b952z6bawfvux8ftt4voejap0xe95mzdm8p9ur4fxlth&ep=v1_stickers_related&rid=giphy.gif&ct=s&quot;);
+    "></div>
+
+  <div class="w-full px-6 py-8 md:px-8 lg:w-1/2">
+    <div class="flex justify-center mx-auto">
+      <h1 class="text-3xl font-bold first-letter:text-5xl">Edu-App</h1>
+    </div>
+
+
+    <form [formGroup]="registrationForm" (ngSubmit)="registerUser()">
+      <div class="mt-4">
+        <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" for="username">Username</label>
+        <input id="username" type="text" formControlName="username"
+          class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
+          type="text" placeholder="Enter your username" />
+        <p>
+          <span *ngIf="
+              registrationForm.get('username')?.hasError('required') &&
+              registrationForm.get('username')?.touched
+            " class="text-red-500 mt-1">
+            Username is required
+          </span>
+          <span *ngIf="
+              registrationForm.get('username')?.hasError('minlength') &&
+              registrationForm.get('username')?.touched
+            " class="text-red-500 mt-1">
+            Username must be at least 3 characters long
+          </span>
+        </p>
+      </div>
+      <div class="mt-4">
+        <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" for="email">Email Address</label>
+        <input id="email" type="email" formControlName="email"
+          class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
+          type="email" placeholder="Enter your email" />
+        <p>
+          <span *ngIf="
+              registrationForm.get('email')?.hasError('required') &&
+              registrationForm.get('email')?.touched
+            " class="text-red-500 mt-1">
+            Email is required
+          </span>
+          <span *ngIf="
+              registrationForm.get('email')?.hasError('email') &&
+              registrationForm.get('email')?.touched
+            " class="text-red-500 mt-1">
+            Email is invalid
+          </span>
+        </p>
+      </div>
+
+      <div class="mt-4">
+        <div class="flex justify-between">
+          <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200"
+            for="loggingPassword">Password</label>
+        </div>
+
+        <input id="password" type="password" formControlName="password"
+          class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
+          type="password" placeholder="Enter your password" />
+        <p>
+          <span *ngIf="
+              registrationForm.get('password')?.hasError('required') &&
+              registrationForm.get('password')?.touched
+            " class="text-red-500 mt-1">
+            Password is required
+          </span>
+          <span *ngIf="
+              registrationForm.get('password')?.hasError('minlength') &&
+              registrationForm.get('password')?.touched
+            " class="text-red-500 mt-1">
+            Password must be at least 4 characters long
+          </span>
+        </p>
+      </div>
+
+      <div class="mt-6">
+        <button type="submit" [disabled]="registrationForm.invalid" [ngClass]="{
+            'opacity-50 cursor-not-allowed': registrationForm.invalid
+          }"
+          class="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
+          Sign Up
+        </button>
+      </div>
+    </form>
+    <div class="flex items-center justify-between mt-4">
+      <span class="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
+      <a routerLink="/" class="text-xs text-gray-500 uppercase dark:text-gray-400 hover:underline">or sign in</a>
+      <span class="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
+    </div>
+  </div>
+</div>

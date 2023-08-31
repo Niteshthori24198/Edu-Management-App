@@ -1,0 +1,210 @@
+<section class="bg-[cyan] dark:bg-gray-900">
+  <div class="flex justify-center min-h-screen">
+   
+
+    <div
+      class="flex items-center w-full max-w-3xl p-8 mx-auto lg:px-12 lg:w-3/5"
+    >
+      <div class="w-full">
+        <h1
+          class="text-2xl font-semibold tracking-wider text-gray-800 capitalize dark:text-white"
+        >
+          Create Instructor Profile
+        </h1>
+
+     
+        <form
+          [formGroup]="instructorForm"
+          (ngSubmit)="createProfile()"
+          class="flex  gap-6 mt-10 flex-col"
+        >
+          <!-- Full Name -->
+          <div>
+            <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200"
+              >Full Name</label
+            >
+            <input
+              formControlName="name"
+              type="text"
+              placeholder="Enter Name here"
+              class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+            />
+            <p
+              *ngIf="
+                instructorForm.get('name')?.hasError('required') &&
+                instructorForm.get('name')?.touched
+              "
+              class="text-red-500 mt-1"
+            >
+              Full Name is required
+            </p>
+          </div>
+          <!-- Email (Read-only) -->
+          <div>
+            <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200"
+              >Email address</label
+            >
+            <input
+              formControlName="email"
+              type="email"
+              readonly
+              class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:none"
+            />
+          </div>
+
+          <!-- Date of Birth -->
+          <div>
+            <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200"
+              >Date of Birth</label
+            >
+            <input
+              formControlName="date_of_birth"
+              type="date"
+              class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+            />
+            <p
+              *ngIf="
+                instructorForm.get('date_of_birth')?.hasError('required') &&
+                instructorForm.get('date_of_birth')?.touched
+              "
+              class="text-red-500 mt-1"
+            >
+              Date of Birth is required
+            </p>
+          </div>
+
+          <!-- Department Dropdown -->
+          <div>
+            <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200"
+              >Department</label
+            >
+            <select
+             formControlName="department"
+              class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+            >
+              <option value="" disabled selected>Select Department</option>
+              <option value="Science">Science</option>
+              <option value="Arts">Arts</option>
+              <option value="Engineering">Engineering</option>
+              <!-- Add more options as needed -->
+            </select>
+            <p
+              *ngIf="
+                instructorForm.get('department')?.hasError('required') &&
+                instructorForm.get('department')?.touched
+              "
+              class="text-red-500 mt-1"
+            >
+              Department is required
+            </p>
+          </div>
+          <!-- Gender -->
+          <div>
+            <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200"
+              >Gender</label
+            >
+            <div class="flex items-center mt-2" >
+              <label class="inline-flex items-center mr-4">
+                <input
+                  formControlName="gender"
+                  type="radio"
+                  class="text-blue-500 form-radio"
+                  name="gender"
+                  value="Male"
+                />
+                <span class="ml-2">Male</span>
+              </label>
+              <label class="inline-flex items-center mr-4">
+                <input
+                  formControlName="gender"
+                  type="radio"
+                  class="text-blue-500 form-radio"
+                  name="gender"
+                  value="Female"
+                />
+                <span class="ml-2">Female</span>
+              </label>
+              <label class="inline-flex items-center">
+                <input
+                  formControlName="gender"
+                  type="radio"
+                  class="text-blue-500 form-radio"
+                  name="gender"
+                  value="Other"
+                />
+                <span class="ml-2">Other</span>
+              </label>
+            </div>
+            <p
+              *ngIf="
+                instructorForm.get('gender')?.hasError('required') &&
+                instructorForm.get('gender')?.touched
+              "
+              class="text-red-500 mt-1"
+            >
+              Gender is required
+            </p>
+          </div>
+          <!-- Contact Number -->
+          <div>
+            <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200"
+              >Contact Number</label
+            >
+            <input
+              type="text"
+              placeholder="XXX-XX-XXXX-XXX"
+              formControlName="contact_number"
+              class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+            />
+            <p>
+              <span
+                *ngIf="
+                  instructorForm.get('contact_number')?.hasError('required') &&
+                  instructorForm.get('contact_number')?.touched
+                "
+                class="text-red-500 mt-1"
+              >
+                Contact number is required
+              </span>
+              <span
+                *ngIf="
+                  instructorForm.get('contact_number')?.hasError('minlength') &&
+                  instructorForm.get('contact_number')?.touched
+                "
+                class="text-red-500 mt-1"
+              >
+                Contact number must be at least 10 characters long
+              </span>
+            </p>
+          </div>
+
+          <!-- ... (Existing code for password fields and Sign Up button) ... -->
+
+          <button
+            type="submit"
+            [disabled]="instructorForm.invalid"
+            [ngClass]="{
+              'opacity-50 cursor-not-allowed': instructorForm.invalid
+            }"
+            class="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-black rounded-lg hover:bg-gray-900 focus:outline-none focus:ring focus:ring-black focus:ring-opacity-50 md:col-span-2"
+          >
+            <span>Create Profile </span>
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5 rtl:-scale-x-100"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,101 @@
+<div
+  class="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl mt-[150px]"
+>
+<div class="hidden bg-cover lg:block lg:w-3/4" style="
+background-image: url(&quot;https://media2.giphy.com/media/MQ05zoiUkdjGB0iNZF/giphy.gif?cid=6c09b952z6bawfvux8ftt4voejap0xe95mzdm8p9ur4fxlth&ep=v1_stickers_related&rid=giphy.gif&ct=s&quot;);
+"></div>
+
+  <div class="w-full px-6 py-8 md:px-8 lg:w-1/2">
+    <div class="flex justify-center mx-auto">
+      <h1 class="text-3xl font-bold first-letter:text-5xl">Edu-App</h1>
+    </div>
+  
+    <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+      <div class="mt-4">
+        <label
+          class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200"
+          for="LoggingEmailAddress"
+          >Email Address</label
+        >
+        <input
+          id="email"
+          formControlName="email"
+          class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
+          type="email"
+          placeholder="Enter your email address"
+        />
+        <p>
+          <span
+            *ngIf="
+              loginForm.get('email')?.hasError('required') &&
+              loginForm.get('email')?.touched
+            "
+            class="text-red-500 mt-1"
+          >
+            Email is required
+          </span>
+          <span
+            *ngIf="
+              loginForm.get('email')?.hasError('email') &&
+              loginForm.get('email')?.touched
+            "
+            class="text-red-500 mt-1"
+          >
+            Email is invalid
+          </span>
+        </p>
+      </div>
+
+      <div class="mt-4">
+        <div class="flex justify-between">
+          <label
+            class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200"
+            for="loggingPassword"
+            >Password</label
+          >
+          <a
+            href="#"
+            class="text-xs text-gray-500 dark:text-gray-300 hover:underline"
+            >Forget Password?</a
+          >
+        </div>
+
+        <input
+          formControlName="password"
+          id="password"
+          class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
+          type="password"
+          placeholder="Enter your password"
+        />
+      </div>
+      <p
+        *ngIf="
+          loginForm.get('password')?.hasError('required') &&
+          loginForm.get('password')?.touched
+        "
+        class="text-red-500 mt-1"
+      >
+        Password is required
+      </p>
+      <button
+        class="mt-6 w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
+        type="submit"
+        [disabled]="loginForm.invalid"
+        [ngClass]="{ 'opacity-50 cursor-not-allowed': loginForm.invalid }"
+      >
+        Sign In
+      </button>
+    </form>
+    <div class="flex items-center justify-between mt-4">
+      <span class="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
+
+      <a
+        routerLink="/register"
+        class="text-xs text-gray-500 uppercase dark:text-gray-400 hover:underline"
+        >or sign up</a
+      >
+
+      <span class="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
+    </div>
+  </div>
+</div>
