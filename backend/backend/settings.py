@@ -140,15 +140,4 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 
-#  In middleware
-# from datetime import datetime, timedelta
-# from rest_framework.authentication import TokenAuthentication
-# from rest_framework.exceptions import AuthenticationFailed
-# from django.utils import timezone
 
-# class ExpiringTokenAuthentication(TokenAuthentication):
-#     def authenticate_credentials(self, key):
-#         user, token = super().authenticate_credentials(key)
-#         if token.created < timezone.now() - timedelta(seconds=settings.TOKEN_EXPIRATION):
-#             raise AuthenticationFailed('Token has expired')
-#         return user, token
