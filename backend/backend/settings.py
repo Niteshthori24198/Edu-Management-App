@@ -122,8 +122,6 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
 
@@ -135,20 +133,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
     ],
-    # Other settings...
-    # 'TOKEN_EXPIRATION': 3600,
+   
 }
 
 
-#  In middleware
-# from datetime import datetime, timedelta
-# from rest_framework.authentication import TokenAuthentication
-# from rest_framework.exceptions import AuthenticationFailed
-# from django.utils import timezone
-
-# class ExpiringTokenAuthentication(TokenAuthentication):
-#     def authenticate_credentials(self, key):
-#         user, token = super().authenticate_credentials(key)
-#         if token.created < timezone.now() - timedelta(seconds=settings.TOKEN_EXPIRATION):
-#             raise AuthenticationFailed('Token has expired')
-#         return user, token
