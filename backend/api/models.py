@@ -14,10 +14,10 @@ MAJOR_CHOICES = [
 ]
 
 class Student(models.Model):
-    name = models.CharField(max_length=150)
+    name = models.CharField(max_length=100)
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
     date_of_birth = models.DateField()
-    major = models.CharField(max_length=100, choices=MAJOR_CHOICES)
+    major = models.CharField(max_length=50, choices=MAJOR_CHOICES)
     email = models.EmailField()
     contact_number = models.CharField(max_length=20)
 
@@ -25,10 +25,10 @@ class Student(models.Model):
         return self.name
 
 class Instructor(models.Model):
-    name = models.CharField(max_length=150)
+    name = models.CharField(max_length=100)
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
     date_of_birth = models.DateField()
-    department = models.CharField(max_length=100)  
+    department = models.CharField(max_length=50)  
     email = models.EmailField()
     contact_number = models.CharField(max_length=20)
 
@@ -37,9 +37,7 @@ class Instructor(models.Model):
 
 
 class Department(models.Model):
-    name = models.CharField(max_length=100)
-    # You might want to add additional fields here
-
+    name = models.CharField(max_length=100,choices=MAJOR_CHOICES)
     def __str__(self):
         return self.name
 

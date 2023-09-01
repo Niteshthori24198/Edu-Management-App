@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'api',
     'rest_framework',
     "rest_framework.authtoken",
-    'corsheaders',
+    "corsheaders"
 ]
 
 MIDDLEWARE = [
@@ -51,8 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
-   
+    'corsheaders.middleware.CorsMiddleware'
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -85,6 +84,11 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ORIGINS = [
+    "http://localhost:4200"  
+]
 
 
 # Password validation
@@ -135,9 +139,16 @@ REST_FRAMEWORK = {
     # 'TOKEN_EXPIRATION': 3600,
 }
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:4200",
-]
 
+#  In middleware
+# from datetime import datetime, timedelta
+# from rest_framework.authentication import TokenAuthentication
+# from rest_framework.exceptions import AuthenticationFailed
+# from django.utils import timezone
 
-
+# class ExpiringTokenAuthentication(TokenAuthentication):
+#     def authenticate_credentials(self, key):
+#         user, token = super().authenticate_credentials(key)
+#         if token.created < timezone.now() - timedelta(seconds=settings.TOKEN_EXPIRATION):
+#             raise AuthenticationFailed('Token has expired')
+#         return user, token

@@ -1,0 +1,168 @@
+<app-navbar></app-navbar>
+<section class="mt-8">
+  <div class="flex justify-center min-h-screen">
+    <div
+      class="hidden bg-content lg:block lg:w-[70%]"
+      style="
+        background-image: url(../../../assets/images/course.png);
+        background-repeat: no-repeat;
+      "
+    ></div>
+    <div
+      class="flex items-center w-full max-w-3xl p-8 mx-auto lg:px-12 lg:w-3/5"
+    >
+      <div class="w-full">
+        <form
+          [formGroup]="courseForm"
+          class="max-w-md mx-auto bg-[#f3f3f3] p-6 rounded-lg"
+          (ngSubmit)="onSubmit()"
+        >
+          <!-- Course Code -->
+          <div class="mb-4">
+            <label
+              for="courseCode"
+              class="block text-gray-700 "
+            >
+              Course Code
+            </label>
+            <input
+              formControlName="course_code"
+              id="courseCode"
+              type="text"
+              placeholder="DIGIMARKET"
+              class="w-full px-4 py-2 text-gray-800 bg-white border border-gray-300 rounded-lg  focus:ring-blue-400 focus:border-blue-400 focus:outline-none"
+            />
+            <p
+              *ngIf="
+                courseForm.get('course_code')?.hasError('required') &&
+                courseForm.get('course_code')?.touched
+              "
+              class="text-red-500"
+            >
+              Course Code is required
+            </p>
+          </div>
+
+          <!-- Course Name -->
+          <div class="mb-4">
+            <label
+              for="courseName"
+              class="block text-gray-700 "
+            >
+              Course Name
+            </label>
+            <input
+              formControlName="course_name"
+              id="courseName"
+              type="text"
+              placeholder="Digital Marketing Strategy"
+              class="w-full px-4 py-2 text-gray-800 bg-white border border-gray-300 rounded-lg  focus:ring-blue-400 focus:border-blue-400 focus:outline-none"
+            />
+            <p
+              *ngIf="
+                courseForm.get('course_name')?.hasError('required') &&
+                courseForm.get('course_name')?.touched
+              "
+              class="text-red-500"
+            >
+              Course Name is required
+            </p>
+          </div>
+
+          <!-- Department -->
+          <div class="mb-4">
+            <label
+              for="department"
+              class="block text-gray-700 "
+            >
+              Department
+            </label>
+            <select
+              formControlName="department"
+              id="department"
+              class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg  "
+            >
+              <option value="" disabled selected>Select Department</option>
+              <option value="1">Computer Science</option>
+              <option value="2">Engineering</option>
+              <option value="3">Business</option>
+              <!-- Add more options as needed -->
+            </select>
+            <p
+              *ngIf="
+                courseForm.get('department')?.hasError('required') &&
+                courseForm.get('department')?.touched
+              "
+              class="text-red-500"
+            >
+              Department is required
+            </p>
+          </div>
+
+          <!-- Credits -->
+          <div class="mb-4">
+            <label for="credits" class="block text-gray-700 ">
+              Credits
+            </label>
+            <input
+              formControlName="credits"
+              id="credits"
+              type="number"
+              placeholder="3"
+              class="w-full px-4 py-2 text-gray-800 bg-white border border-gray-300 rounded-lg  focus:ring-blue-400 focus:border-blue-400 focus:outline-none"
+            />
+            <p
+              *ngIf="
+                courseForm.get('credits')?.hasError('required') &&
+                courseForm.get('credits')?.touched
+              "
+              class="text-red-500"
+            >
+              Credits is required
+            </p>
+          </div>
+
+          <!-- Description -->
+          <div class="mb-4">
+            <label
+              for="description"
+              class="block text-gray-700 "
+            >
+              Description
+            </label>
+            <textarea
+              formControlName="description"
+              id="description"
+              rows="4"
+              placeholder="Learn the essentials of digital marketing. Cover topics such as SEO, social media marketing, content strategy, email campaigns, and analytics to drive business growth."
+              class="w-full px-4 py-2 text-gray-800 bg-white border border-gray-300 rounded-lg  focus:ring-blue-400 focus:border-blue-400 focus:outline-none"
+            ></textarea>
+            <p
+              *ngIf="
+                courseForm.get('description')?.hasError('required') &&
+                courseForm.get('description')?.touched
+              "
+              class="text-red-500"
+            >
+              Description is required
+            </p>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="mt-6">
+            <button
+              type="submit"
+              [disabled]="courseForm.invalid"
+              [ngClass]="{
+                'opacity-50 cursor-not-allowed': courseForm.invalid
+              }"
+              class="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-black rounded-lg hover:bg-gray-900 focus:outline-none focus:ring focus:ring-black focus:ring-opacity-50 md:col-span-2"
+            >
+              Create Course
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

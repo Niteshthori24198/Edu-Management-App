@@ -3,4 +3,5 @@ export const environment = {
   apiUrl: 'http://127.0.0.1:8000',
   instructorUrl: 'http://127.0.0.1:8000/api/instructors',
   studentUrl: 'http://127.0.0.1:8000/api/students',
+  courseUrl: 'http://127.0.0.1:8000/api/courses'
 };
